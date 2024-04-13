@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./DnD.css" />
+    <title>DnD</title>
+  </head>
+  <body>
+    <!-- EXPLICITLY PASS THE ATTRIBUTE  -->
+    <form action="" id="form" draggable="true">
+      <div class="form__header">
+        <input type="text" class="form__name" name="name" placeholder="name:" />
+        <input type="NUMBER" class="form__cvc" name="cvc" placeholder="cvc:" />
+      </div>
+      <textarea
+        class="form__number"
+        name="number"
+        placeholder="xxxx xxxx xxxx xxxx:"
+      ></textarea>
+    </form>
+
+    <h2>DROP FIELD</h2>
+
+    <section class="cards">
+      <!-- RENDER -->
+    </section>
+
+    <script src="./js/DnD.js"></script>
+  </body>
+</html>
