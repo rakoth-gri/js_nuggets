@@ -1,6 +1,7 @@
 const CONTENT = document.querySelector(".content");
-const INPUT_FILE = document.querySelector(".fileInput");
+const INPUT_FILE = document.querySelector("input[type='file']");
 const TABLE = document.querySelector("TABLE");
+
 
 INPUT_FILE.addEventListener("change", handler);
 
@@ -30,60 +31,41 @@ function handler(e) {
   reader.readAsText(content);
 
   reader.onload = () => {
-    //     reader.result.split("\r\n").forEach((row, i) => {
-    //         let $TR = document.createElement('tr')
+    let result = reader.result.split("\r\n");
 
-    //         row.split(",").forEach(td => {
+    result.forEach((row, ind) => {
+      let tr = document.createElement("tr");
 
-    //             let $TD;
+      row.split(",").forEach((w, i) => {
+        const td =
+          ind === 0
+            ? document.createElement("th")
+            : document.createElement("td");
+        td.textContent = w;
+        tr.append(td);
+      });
 
-    //             i === 0 ? $TD = document.createElement("th"): $TD = document.createElement("td")
-
-    //             $TD.textContent = td
-
-    //             $TR.append($TD)
-    //         })
-    //         TABLE.append($TR)
-    //     })
-
-    let html = reader.result
-      .split("\r\n")
-      .map(
-        (row, i) => `
-        <tr>
-            ${row
-              .split(",")
-              .map(
-                (td) => `
-                <${i > 0 ? "td" : "th"}> ${td} </${i > 0 ? "td" : "th"}>
-            `
-              )
-              .join("")}
-        </tr>    
-    `
-      )
-      .join("");
-
-    TABLE.insertAdjacentHTML("afterbegin", html);
+      TABLE.children[0].append(tr);
+    });
   };
 }
 
 // IMAGE -----
 
-function handler(e) {
-  const content = this.files[0];
+// function handler(e) {
+//   const content = this.files[0];
 
-  let reader = new FileReader();
+//   let reader = new FileReader();
 
-  reader.readAsDataURL(content);
+//   reader.readAsDataURL(content);
 
-  reader.onload = () => {    
-    const img = new Image();
-    img.src = reader.result;
-    CONTENT.append(img);
-  };
+//   reader.onload = () => {
+//     const img = new Image();
+//     img.src = reader.result;
+//     CONTENT.append(img);
+//   };
 
-  // reader.onerror = () => {
-  //   console.log(reader.error);
-  // }
-}
+// reader.onerror = () => {
+//   console.log(reader.error);
+// }
+// }

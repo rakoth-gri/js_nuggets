@@ -16,3 +16,8 @@ function transStr(str) {
 
 console.log(transStr(str) );
 
+// const str = "Zz";
+
+// for (const letter of str) {
+//     console.log(letter.charCodeAt(0))
+// }
